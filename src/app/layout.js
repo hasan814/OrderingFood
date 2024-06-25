@@ -2,6 +2,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/layout/Header";
 import Footer from "@/layout/Footer";
+import NextAuthProvider from "src/provider/NextAuthProvider";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -17,9 +18,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${roboto.className} max-w-6xl mx-auto p-4`}>
-        <Header />
-        <main style={{ minHeight: "80vh" }}>{children}</main>
-        <Footer />
+        <NextAuthProvider>
+          <Header />
+          <main style={{ minHeight: "80vh" }}>{children}</main>
+          <Footer />
+        </NextAuthProvider>
       </body>
     </html>
   );
