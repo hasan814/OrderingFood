@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${roboto.className} max-w-6xl mx-auto p-4`}>
         <Header />
-        <main className="">{children}</main>
+        <main style={{ minHeight: "80vh" }}>{children}</main>
         <Footer />
       </body>
     </html>

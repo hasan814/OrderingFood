@@ -13,7 +13,7 @@ const HomeMenu = () => {
           <Image src={"/sallad2.png"} alt="pizza" width={107} height={195} />
         </div>
       </div>
-      <SectionHeaders subHeader={"CHECK OUT"} mainHeader={"Menu"} />
+      <SectionHeaders subHeader={"check out"} mainHeader={"Menu"} />
       <div className="grid grid-cols-3 gap-4">
         <MenuItems />
         <MenuItems />

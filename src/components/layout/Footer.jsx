@@ -5,7 +5,7 @@ const Footer = () => {
     <div className="border-t p-8 text-center text-gray-500 mt-16">
       <p>
         Developed by
-        <span className="uppercase text-red-500 font-semibold">
+        <span className="uppercase text-red-500 font-semibold px-2">
           hasan moosavi
         </span>
         &copy; 2024 allright Reserved
