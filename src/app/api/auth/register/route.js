@@ -1,7 +1,8 @@
-import User from "@/models/Use";
-import { hashPassword } from "@/utils/auth";
-import connectDB from "@/utils/connectDb";
 import { NextResponse } from "next/server";
+import { hashPassword } from "@/utils/auth";
+
+import User from "@/models/Use";
+import connectDB from "@/utils/connectDb";
 
 export const POST = async (req) => {
   try {
@@ -13,7 +14,10 @@ export const POST = async (req) => {
 
     const existingUser = await User.findOne({ email });
     if (existingUser)
-      return NextResponse.json({ error: "There is sush an account" }, {});
+      return NextResponse.json(
+        { error: "There is such an account" },
+        { status: 422 }
+      );
     const hashedPassword = await hashPassword(password);
     const newUser = await User.create({ email, password: hashedPassword });
 
@@ -21,7 +25,7 @@ export const POST = async (req) => {
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { error: "Error in Connecting to DB" },
+      { error: "مشکلی در سرور رخ داده است" },
       { status: 500 }
     );
   }
