@@ -1,7 +1,7 @@
 import { verifyPassword } from "@/utils/auth";
 
-import connectDB from "@/utils/connectDb";
 import CredentialsProvider from "next-auth/providers/credentials";
+import connectDB from "@/utils/connectDb";
 import NextAuth from "next-auth/next";
 import User from "@/models/Use";
 

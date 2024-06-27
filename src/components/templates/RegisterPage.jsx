@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import Image from "next/image";
 import Loader from "@/elements/Loader";
+import Link from "next/link";
 
 const RegisterPage = () => {
   // ============ Router ===========
@@ -73,6 +74,12 @@ const RegisterPage = () => {
           <Image src="/google.png" alt="alt" width={24} height={24} />
           Login with Google
         </button>
+        <div className="text-center my-4 text-gray-500 border-t">
+          Existing account?{" "}
+          <Link href={"/login"} className="underline">
+            Login here
+          </Link>
+        </div>
       </form>
     </section>
   );
