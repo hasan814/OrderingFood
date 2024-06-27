@@ -14,11 +14,11 @@ const Hero = () => {
           delicious joy in life
         </p>
         <div className="flex gap-4 items-center text-sm">
-          <button className="bg-primary uppercase flex gap-2 text-sm text-white px-4 py-2 rounded-full">
+          <button className="bg-primary uppercase flex items-center justify-center gap-2 text-sm text-white p-2 rounded-full">
             Order Now
             <Arrow />
           </button>
-          <button className="flex items-center gap-2 py-2 text-gray-600 font-semibold">
+          <button className="flex items-center border-0 gap-2 py-2 text-gray-600 font-semibold">
             Learn More <Arrow />
           </button>
         </div>
