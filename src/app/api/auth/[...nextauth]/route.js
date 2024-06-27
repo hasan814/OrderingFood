@@ -6,9 +6,10 @@ import NextAuth from "next-auth/next";
 import User from "@/models/Use";
 
 export const authOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         const { email, password } = credentials;
         try {
           await connectDB();
