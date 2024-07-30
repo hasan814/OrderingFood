@@ -1,5 +1,6 @@
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
 import Image from "next/image";
+
 const Hero = () => {
   return (
     <section className="hero">
