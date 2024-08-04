@@ -1,3 +1,4 @@
+import SectionHeaders from "@/elements/SectionHeaders.tsx";
 import Image from "next/image";
 import Card from "./Card";
 
@@ -13,10 +14,7 @@ const Menu = () => {
         </div>
       </div>
       <div className="text-center mb-4">
-        <h3 className="uppercase text-gray-500 font-semibold leading-4">
-          Check Out
-        </h3>
-        <h2 className="text-primary font-bold text-4xl italic">Menu</h2>
+        <SectionHeaders subHeader={"check out"} mainHeader={"Menu"} />
       </div>
       <div className="grid grid-cols-3 gap-4">
         <Card />

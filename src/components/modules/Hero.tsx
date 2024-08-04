@@ -1,4 +1,5 @@
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
+
 import Image from "next/image";
 
 const Hero = () => {
@@ -24,12 +25,13 @@ const Hero = () => {
           </button>
         </div>
       </div>
-      <div className="relative">
+      <div className="relative w-full h-96">
         <Image
-          src={"/pizza.png"}
+          src="/pizza.png"
           alt="pizza"
-          layout="fill"
-          objectFit="contain"
+          fill
+          style={{ objectFit: "contain" }}
+          priority
         />
       </div>
     </section>
