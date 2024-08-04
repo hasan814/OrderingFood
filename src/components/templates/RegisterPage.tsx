@@ -3,6 +3,7 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { FormData } from "@/types/index";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const RegisterPage: React.FC = () => {
   // ============== Router =============
@@ -35,14 +36,8 @@ const RegisterPage: React.FC = () => {
   return (
     <section className="mt-8">
       <h1 className="text-center text-primary text-4xl mb-6">Register</h1>
-      <form
-        onSubmit={handleSubmit}
-        className="max-w-md mx-auto p-4 bg-white shadow-md rounded"
-      >
+      <form onSubmit={handleSubmit} className="max-w-md mx-auto block">
         <div className="mb-4">
-          <label className="block text-gray-700" htmlFor="name">
-            Name
-          </label>
           <input
             type="text"
             id="name"
@@ -55,9 +50,6 @@ const RegisterPage: React.FC = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700" htmlFor="phoneNumber">
-            Phone Number
-          </label>
           <input
             type="number"
             id="phoneNumber"
@@ -70,9 +62,6 @@ const RegisterPage: React.FC = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700" htmlFor="email">
-            Email
-          </label>
           <input
             type="email"
             id="email"
@@ -85,9 +74,6 @@ const RegisterPage: React.FC = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700" htmlFor="password">
-            Password
-          </label>
           <input
             type="password"
             id="password"
@@ -100,9 +86,6 @@ const RegisterPage: React.FC = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700" htmlFor="confirmPassword">
-            Confirm Password
-          </label>
           <input
             type="password"
             id="confirmPassword"
@@ -114,11 +97,13 @@ const RegisterPage: React.FC = () => {
             required
           />
         </div>
-        <button
-          type="submit"
-          className="w-full p-2 bg-primary text-white rounded"
-        >
-          Register
+        <button type="submit">Register</button>
+        <div className="my-4 text-center text-gray-500">
+          or Login with Google
+        </div>
+        <button className="flex gap-4 item-center justify-center">
+          <Image src={"/google.png"} alt="google" width={24} height={24} />
+          Login with Google
         </button>
       </form>
     </section>
