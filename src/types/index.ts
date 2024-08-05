@@ -1,12 +1,13 @@
 import { Document } from "mongoose";
 
-export interface FormData {
+export interface FormDataProps {
   name: string;
   phoneNumber: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
+
 
 export interface IUser extends Document {
   name: string;

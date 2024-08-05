@@ -2,8 +2,8 @@
 
 import { useState, ChangeEvent, FormEvent } from "react";
 import { toast, Toaster } from "react-hot-toast";
+import { FormDataProps } from "@/types/index";
 import { useRouter } from "next/navigation";
-import { FormData } from "@/types/index";
 
 import Loader from "@/elements/Loader";
 import Link from "next/link";
@@ -12,11 +12,11 @@ const RegisterPage: React.FC = () => {
   // ============ State =============
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataProps>({
     name: "",
-    phoneNumber: "",
     email: "",
     password: "",
+    phoneNumber: "",
     confirmPassword: "",
   });
 
