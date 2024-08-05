@@ -1,8 +1,9 @@
-import About from "@/modules/About";
+import { Toaster } from "react-hot-toast";
+
 import Contact from "@/modules/Contact";
+import About from "@/modules/About";
 import Hero from "@/modules/Hero";
 import Menu from "@/modules/Menu";
-import { Toaster } from "react-hot-toast";
 
 const Home = () => {
   return (

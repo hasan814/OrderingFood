@@ -1,16 +1,16 @@
-import { Model, models, Schema, model } from "mongoose";
-import { IUser } from "../types";
+import { Schema, model, models } from 'mongoose';
+import { IUser } from '../types';
 
-const userSchema: Schema<IUser> = new Schema({
-  name: { type: String, required: true },
-  phoneNumber: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
+
+
+const userSchema = new Schema<IUser>({
+  name: { type: String, required: true, trim: true },
+  phoneNumber: { type: String, required: true, trim: true },
+  email: { type: String, required: true, unique: true, trim: true, lowercase: true },
   password: { type: String, required: true },
-  role: { type: String, default: "USER" },
-  createdAt: { type: Date, default: Date.now },
-});
+  role: { type: String, enum: ["USER", "ADMIN"], default: "USER" }
+}, { timestamps: true });
 
+const User = models.User || model<IUser>('User', userSchema);
 
-const User: Model<IUser> = models.User || model<IUser>("User", userSchema)
-
-export default User
+export { User };

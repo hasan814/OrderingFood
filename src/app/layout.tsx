@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 
+import NextAuthProvider from "@/providers/NextAuthProvider";
 import Header from "@/layouts/Header";
 import Footer from "@/layouts/Footer";
 
@@ -21,11 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <div className="px-4 max-w-4xl mx-auto mt-3">
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </div>
+        <NextAuthProvider>
+          <div className="px-4 max-w-4xl mx-auto mt-3">
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </div>
+        </NextAuthProvider>
       </body>
     </html>
   );

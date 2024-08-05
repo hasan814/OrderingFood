@@ -1,15 +1,17 @@
 "use client";
 
 import { useState, ChangeEvent, FormEvent } from "react";
-import { FormData } from "@/types/index";
+import { toast, Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { FormData } from "@/types/index";
+
+import Loader from "@/elements/Loader";
+import Link from "next/link";
 
 const RegisterPage: React.FC = () => {
-  // ============== Router =============
+  // ============ State =============
   const router = useRouter();
-
-  // ============== State =============
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: "",
     phoneNumber: "",
@@ -18,7 +20,7 @@ const RegisterPage: React.FC = () => {
     confirmPassword: "",
   });
 
-  // ============== Function =============
+  // ============ Function =============
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData({
@@ -27,16 +29,46 @@ const RegisterPage: React.FC = () => {
     });
   };
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    console.log("Form submitted", formData);
+
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const data = await response.json();
+      setLoading(false);
+
+      if (response.status === 201) {
+        toast.success("Registration successful");
+        router.push("/login");
+      } else {
+        toast.error(data.error || "Registration failed");
+      }
+    } catch (error) {
+      setLoading(false);
+      toast.error("An error occurred. Please try again.");
+    }
   };
 
-  // ============== Rendering =============
   return (
     <section className="mt-8">
+      <Toaster />
       <h1 className="text-center text-primary text-4xl mb-6">Register</h1>
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto block">
+      <form
+        onSubmit={handleSubmit}
+        className="max-w-md mx-auto p-4 bg-white shadow-md rounded"
+      >
         <div className="mb-4">
           <input
             type="text"
@@ -97,14 +129,21 @@ const RegisterPage: React.FC = () => {
             required
           />
         </div>
-        <button type="submit">Register</button>
-        <div className="my-4 text-center text-gray-500">
-          or Login with Google
-        </div>
-        <button className="flex gap-4 item-center justify-center">
-          <Image src={"/google.png"} alt="google" width={24} height={24} />
-          Login with Google
-        </button>
+        {loading ? (
+          <Loader />
+        ) : (
+          <button
+            type="submit"
+            className="w-full p-2 bg-primary text-white rounded"
+          >
+            Register
+          </button>
+        )}
+        <p className="text-center mt-4">
+          <Link href="/login">
+            have an account? <span className="underline ml-1">Login</span>
+          </Link>
+        </p>
       </form>
     </section>
   );

@@ -13,6 +13,10 @@ export interface IUser extends Document {
   phoneNumber: string;
   email: string;
   password: string;
-  role: string;
-  createdAt: Date;
+  role?: string;
+}
+
+export interface Credentials {
+  email: string;
+  password: string;
 }
