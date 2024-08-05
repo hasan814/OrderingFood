@@ -31,19 +31,16 @@ export const authOptions: NextAuthOptions = {
                     throw new Error("Error in connecting to the database");
                 }
 
-                if (!email || !password) {
-                    throw new Error("Please provide both email and password");
-                }
+                if (!email || !password) throw new Error("Please provide both email and password");
+
 
                 const user = await User.findOne({ email });
-                if (!user) {
-                    throw new Error("No user found with this email address");
-                }
+                if (!user) throw new Error("No user found with this email address");
+
 
                 const isValid = await verifyPassword(password, user.password);
-                if (!isValid) {
-                    throw new Error("Invalid email or password");
-                }
+                if (!isValid) throw new Error("Invalid email or password");
+
 
                 return {
                     id: user._id,

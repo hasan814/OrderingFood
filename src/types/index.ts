@@ -21,3 +21,9 @@ export interface Credentials {
   email: string;
   password: string;
 }
+
+export interface ProfilePageProps {
+  email: string;
+  userName: string;
+  setUserName: React.Dispatch<React.SetStateAction<string>>;
+}
